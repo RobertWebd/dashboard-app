@@ -1,0 +1,128 @@
+body {
+  background-color: #15171a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  color: white;
+}
+
+#auth__wrapper {
+  width: 400px;
+  height: 350px;
+
+  background-color: #303235;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 180px;
+  height: 400px;
+  padding: 50px 0 0 0;
+}
+
+#auth__logo {
+  height: 40px;
+  width: 60px;
+  border-radius: 10%;
+  margin: 20px 0;
+}
+
+#auth__text,
+#auth__login,
+#auth__password,
+#auth__button {
+  background-color: #15171a;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+#auth__login {
+  margin: 10px 0;
+  width: 100%;
+}
+
+#auth__text {
+  margin: 0 0 20px 0;
+  color: white;
+  background-color: inherit;
+  font-size: 20px;
+  width: 130px;
+  height: 24px;
+}
+
+.C,
+.W {
+  color: rgb(234, 199, 0);
+}
+
+.password__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0 5px 0;
+  position: relative;
+  width: 100% - 30px;
+}
+
+#auth__password {
+  padding-right: 40px;
+  width: 100%;
+}
+
+.password__wrapper_viewIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 5px;
+  cursor: pointer;
+}
+
+#auth__button {
+  margin-top: 30px;
+  color: #02001f;
+  background-color: rgb(234, 199, 0);
+  padding: 5px 10px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 25.5px;
+}
+
+.form__wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form__wrapper input {
+  border: 1px solid #15171a;
+}
+
+#auth__error {
+  position: absolute;
+  bottom: -15px;
+  margin-top: 5px;
+  font-family: Helvetica, Arial, sans-serif;
+  color: red;
+  font-size: 12px;
+  display: none;
+}
+
+.viewIcon__close {
+  display: none;
+}
+
+
