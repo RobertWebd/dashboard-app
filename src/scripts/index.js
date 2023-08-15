@@ -29,8 +29,10 @@ const handleLogin = async () => {
     auth__error.textContent = Errors.InvalidData;
     toggleDisplay(auth__error);
 
-    if (isLoginEmpty) return toggleBorder(userLogin);
-    if (isPassEmpty) return toggleBorder(userPassword);
+    if (isLoginEmpty) toggleBorder(userLogin);
+    if (isPassEmpty) toggleBorder(userPassword);
+    
+    return
   }
 
   if (!isValidLogin(userLoginValue)) {
