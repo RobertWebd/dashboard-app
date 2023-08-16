@@ -1,6 +1,6 @@
 import { setUsers, saveUser } from './users.js';
 import { login } from './api.js';
-import { Errors } from './constants.js';
+import { Errors, Routes } from './constants.js';
 import { isValidLogin, toggleBorder, toggleDisplay } from './utils.js';
 import { showToast } from './toast.js';
 
@@ -10,10 +10,10 @@ const loginButton = document.getElementById('auth__button');
 const userPassword = document.getElementById('auth__password');
 const userLogin = document.getElementById('auth__login');
 
-const handleLogin = async () => {
-  const lds_ring = document.querySelector('.lds-ring');
-  const enter__text = document.querySelector('.enter__text');
+const lds_ring = document.querySelector('.lds-ring');
+const enter__text = document.querySelector('.enter__text');
 
+const handleLogin = async () => {
   const userLoginValue = userLogin.value;
   const userPasswordValue = userPassword.value;
   const isLoginEmpty = userLoginValue === '';
@@ -47,7 +47,7 @@ const handleLogin = async () => {
 
   if (user) {
     saveUser(user);
-    document.location.href = '/public/app.html';
+    document.location.href = Routes.App;
   } else {
     showToast(Errors.InvalidLoginOrPassword);
   }

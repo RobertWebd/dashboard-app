@@ -19,6 +19,6 @@ export const getUsers = () => {
     return mockUsers;
 };
 
-export const saveUser = (userObj) => {
-    sessionStorage.setItem('user', JSON.stringify(userObj));
+export const saveUser = (user) => {
+    sessionStorage.setItem('user', JSON.stringify(user));
 };

@@ -3,3 +3,7 @@ export const Errors = {
   InvalidData: 'Введите данные',
   InvalidLogin: 'Введите корректный логин',
 };
+
+export const Routes = {
+  App: '/public/app.html',
+};
