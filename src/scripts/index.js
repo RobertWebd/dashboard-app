@@ -2,7 +2,7 @@ import { setUsers, saveUser } from './users.js';
 import { login } from './api.js';
 import { Errors } from './constants.js';
 import { isValidLogin, toggleBorder, toggleDisplay } from './utils.js';
-import { useToast } from './toast.js';
+import { showToast } from './toast.js';
 
 setUsers();
 
@@ -25,7 +25,7 @@ const handleLogin = async () => {
   toggleDisplay(lds_ring, false);
 
   if (isLoginEmpty || isPassEmpty) {
-    useToast(Errors.InvalidData);
+    showToast(Errors.InvalidData);
 
     if (isLoginEmpty) toggleBorder(userLogin);
     if (isPassEmpty) toggleBorder(userPassword);
@@ -34,15 +34,14 @@ const handleLogin = async () => {
   }
 
   if (!isValidLogin(userLoginValue)) {
-
     toggleBorder(userLogin);
-    useToast(Errors.InvalidLogin);
-
-    return;
+    return showToast(Errors.InvalidLogin);
   }
 
   toggleDisplay(enter__text, false);
   toggleDisplay(lds_ring);
+
+  loginButton.setAttribute('disabled', 'true');
 
   const user = await login({ login: userLoginValue, password: userPasswordValue });
 
@@ -50,10 +49,12 @@ const handleLogin = async () => {
     saveUser(user);
     document.location.href = '/public/app.html';
   } else {
-    toggleDisplay(enter__text);
-    toggleDisplay(lds_ring, false);
-    useToast(Errors.InvalidLoginOrPassword);
+    showToast(Errors.InvalidLoginOrPassword);
   }
+
+  toggleDisplay(enter__text);
+  toggleDisplay(lds_ring, false);
+  loginButton.removeAttribute('disabled');
 };
 
 loginButton.addEventListener('click', handleLogin);
