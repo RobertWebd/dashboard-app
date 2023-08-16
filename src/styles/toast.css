@@ -1,16 +1,17 @@
 .toast__pageLocation {
   position: absolute;
-  bottom: 50px;
-  right: 50px;
+  bottom: 15px;
+  right: 15px;
   color: white;
 }
 
 .toast__wrapper {
-  background-color: rgb(209, 0, 0);
+  background-color: #990000;
   border-radius: 5px;
   padding: 1px;
   margin: 5px;
   font-size: 16px;
+  animation: toast-enter 0.5s, toast-exit 0.5s ease 4.5s;
 }
 
 .toast__content {
@@ -36,4 +37,22 @@
 .content__closeButton {
   flex: 0 0 auto;
   cursor: pointer;
+}
+
+@keyframes toast-enter {
+  0% {
+    transform: translateX(200px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes toast-exit {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(400px);
+  }
 }
