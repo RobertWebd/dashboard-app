@@ -12,7 +12,7 @@ input {
 #auth__wrapper {
   width: 400px;
   height: 350px;
-
+  position: relative;
   background-color: #303235;
   border-radius: 10px;
   display: flex;
@@ -109,16 +109,6 @@ input {
 
 .form__wrapper input {
   border: 1px solid #15171a;
-}
-
-#auth__error {
-  position: absolute;
-  bottom: -15px;
-  margin-top: 5px;
-  font-family: Helvetica, Arial, sans-serif;
-  color: red;
-  font-size: 12px;
-  display: none;
 }
 
 .viewIcon__close {

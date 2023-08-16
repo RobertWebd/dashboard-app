@@ -1,0 +1,39 @@
+.toast__pageLocation {
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  color: white;
+}
+
+.toast__wrapper {
+  background-color: rgb(209, 0, 0);
+  border-radius: 5px;
+  padding: 1px;
+  margin: 5px;
+  font-size: 16px;
+}
+
+.toast__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 10px;
+}
+
+.content__icon {
+  width: 15px;
+}
+
+.content__text {
+  flex: 1 0 auto;
+  padding: 0 5px;
+}
+
+.text__header {
+  font-weight: 570;
+}
+
+.content__closeButton {
+  flex: 0 0 auto;
+  cursor: pointer;
+}

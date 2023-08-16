@@ -1,5 +1,5 @@
 export const Errors = {
-  InvalidLoginOrPassword: 'Неправильный логин / пароль',
+  InvalidLoginOrPassword: 'Неверный логин / пароль',
   InvalidData: 'Введите данные',
   InvalidLogin: 'Введите корректный логин',
 };

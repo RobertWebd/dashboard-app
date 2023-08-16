@@ -2,6 +2,7 @@ import { setUsers, saveUser } from './users.js';
 import { login } from './api.js';
 import { Errors } from './constants.js';
 import { isValidLogin, toggleBorder, toggleDisplay } from './utils.js';
+import { useToast } from './toast.js';
 
 setUsers();
 
@@ -11,7 +12,6 @@ const userLogin = document.getElementById('auth__login');
 
 const handleLogin = async () => {
   const lds_ring = document.querySelector('.lds-ring');
-  const auth__error = document.getElementById('auth__error');
   const enter__text = document.querySelector('.enter__text');
 
   const userLoginValue = userLogin.value;
@@ -22,24 +22,21 @@ const handleLogin = async () => {
   toggleBorder(userLogin, false);
   toggleBorder(userPassword, false);
 
-  toggleDisplay(auth__error, false);
   toggleDisplay(lds_ring, false);
 
   if (isLoginEmpty || isPassEmpty) {
-    auth__error.textContent = Errors.InvalidData;
-    toggleDisplay(auth__error);
+    useToast(Errors.InvalidData);
 
     if (isLoginEmpty) toggleBorder(userLogin);
     if (isPassEmpty) toggleBorder(userPassword);
-    
-    return
+
+    return;
   }
 
   if (!isValidLogin(userLoginValue)) {
-    auth__error.textContent = Errors.InvalidLogin;
 
     toggleBorder(userLogin);
-    toggleDisplay(auth__error);
+    useToast(Errors.InvalidLogin);
 
     return;
   }
@@ -55,9 +52,7 @@ const handleLogin = async () => {
   } else {
     toggleDisplay(enter__text);
     toggleDisplay(lds_ring, false);
-    toggleDisplay(auth__error);
-
-    auth__error.textContent = Errors.InvalidLoginOrPassword;
+    useToast(Errors.InvalidLoginOrPassword);
   }
 };
 
