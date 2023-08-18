@@ -1,3 +1,7 @@
+export const redirectTo = (url) => {
+  document.location.href = url;
+};
+
 export const delay = (ms) => {
   return new Promise((resolve) => {
     setTimeout(resolve, ms);

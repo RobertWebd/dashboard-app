@@ -3,6 +3,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'Poppins', sans-serif;
 }
 
 input {
@@ -37,6 +38,10 @@ input {
   margin: 20px 0;
 }
 
+.gold {
+  color: #fb7f12;
+}
+
 #auth__text,
 #auth__login,
 #auth__password,
@@ -55,14 +60,8 @@ input {
   margin: 0 0 20px 0;
   color: white;
   background-color: inherit;
-  font-size: 20px;
-  width: 130px;
+  font-size: 18px;
   height: 24px;
-}
-
-.C,
-.W {
-  color: rgb(234, 199, 0);
 }
 
 .password__wrapper {

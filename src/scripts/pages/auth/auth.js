@@ -1,8 +1,8 @@
-import { setUsers, saveUser } from './users.js';
-import { login } from './api.js';
-import { Errors, Routes } from './constants.js';
-import { isValidLogin, toggleBorder, toggleDisplay } from './utils.js';
-import { showToast } from './toast.js';
+import { setUsers, saveUser } from '../../users.js';
+import { login } from '../../api.js';
+import { Errors, Routes } from '../../constants.js';
+import { isValidLogin, toggleBorder, toggleDisplay, redirectTo } from '../../utils.js';
+import { showToast } from '../../toast.js';
 
 setUsers();
 
@@ -47,7 +47,7 @@ const handleLogin = async () => {
 
   if (user) {
     saveUser(user);
-    document.location.href = Routes.App;
+    redirectTo(Routes.App);
   } else {
     showToast(Errors.InvalidLoginOrPassword);
   }

@@ -1,6 +1,6 @@
 const mockUsers = [
-    {phoneNumber: '89274372223', email: 'ra.20.z02@mail.ru', password: '44Robert21!'},
-    {phoneNumber: '89372908085', email: 'blackRay@mail.ru', password: 'Ramil2119kutak%'},
+  { name: 'Robert', phoneNumber: '89274372223', email: 'ra.20.z02@mail.ru', password: '44Robert21!' },
+  { name: 'Ramil', phoneNumber: '89372908085', email: 'blackRay@mail.ru', password: 'Ramil2119kutak%' },
 ];
 
 export const setUsers = (users) => {
@@ -21,4 +21,12 @@ export const getUsers = () => {
 
 export const saveUser = (user) => {
     sessionStorage.setItem('user', JSON.stringify(user));
+};
+
+export const removeUser = () => {
+    sessionStorage.removeItem('user');
+};
+
+export const getAuthUser = () => {
+    return JSON.parse(sessionStorage.getItem('user'));
 };
