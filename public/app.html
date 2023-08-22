@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="/src/styles/minimize.css" />
     <link rel="stylesheet" href="/src/styles/global.css" />
     <link rel="stylesheet" href="/src/styles/app.css" />
+    <link rel='stylesheet' href="/src/styles/dashboardContent.css" />
+    <link rel="stylesheet" href="/src/styles/ldsWeather.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com%22%3E/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -68,9 +70,84 @@
                 </div>
             </div>
         </div>
-        <div class="content">INFOLOCK</div>
+        <div class="content">
+            <div class="content__wrapper">
+
+
+                <div class="content__weather">
+                    <div class="weather__wrapper">
+                        <div class="weather__searchBar">
+                           <div>
+                                <img class='locationIcon' src="/src/icons/locationIcon.png">
+                                <input class="locationInput" placeholder="Enter location">
+                           </div>
+                            <img class='searchIcon' src="/src/icons/searchIcon.png">
+                        </div>
+                        <div class="weather__location">
+                            <p id="cityName"></p>
+                            <p id="updateTime"></p>
+                        </div>
+                        <div class="temperature__wrapper">
+                            <div class="current__temperature">
+                                <div class="celsius"></div>
+                                <img src='/src/icons/clouds.png' class="weather__icon"></img>
+                            </div>
+                            <div class="weather__props">
+                                <div class="prop__speed">
+                                    <img class='windIcon' src="/src/icons/windIcon.png">
+                                    <p class="windSpeed"></p>
+                                </div>
+                                <div class="prop__humidity">
+                                    <img class='humidityIcon' src="/src/icons/humidityIcon.png">
+                                    <p class="humidity"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border"></div>
+                        <div class="weather__hour">
+                            <div class="weather__hourWrapper">
+                                <div class="hour__element">
+                                    <p></p>
+                                    <img class='hourElemIcon' src="/src/icons/clouds.png">
+                                    <p></p>
+                                </div>
+                                <div class="hour__element">
+                                    <p></p>
+                                    <img class='hourElemIcon' src="/src/icons/clouds.png">
+                                    <p></p>
+                                </div>
+                                <div class="hour__element">
+                                    <p></p>
+                                    <img class='hourElemIcon' src="/src/icons/clouds.png">
+                                    <p></p>
+                                </div>
+                                <div class="hour__element">
+                                    <p></p>
+                                    <img class='hourElemIcon' src="/src/icons/clouds.png">
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lds-ring">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+
+
+                <div class="content__currency">
+
+                </div>
+
+
+            </div>
+        </div>
     </div>
     <script type="module" src="/src/scripts/pages/app/app.js"></script>
     <script type="module" src="/src/scripts/pages/app/profileMenu.js"></script>
+    <script type="module" src="/src/scripts/pages/app/weather.js"></script>
 </body>
 </html>
