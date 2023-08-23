@@ -2,9 +2,9 @@ import { displayCorrectWeather, toggleDisplay } from '../../utils.js';
 import { getWeatherByCoords, getWeatherByCity } from '../../api.js';
 
 const contentWeather = document.querySelector('.content__weather');
-const lds_ring = document.querySelector('.lds-ring');
+const loader = document.querySelector('.loader');
 
-toggleDisplay(lds_ring);
+toggleDisplay(loader);
 
 if ('geolocation' in navigator) {
   navigator.geolocation.getCurrentPosition(async (data) => {
@@ -13,7 +13,7 @@ if ('geolocation' in navigator) {
 
     displayCorrectWeather(weatherData);
     toggleDisplay(contentWeather);
-    toggleDisplay(lds_ring, false);
+    toggleDisplay(loader, false);
   });
 } else {
   console.log('не могу получить данные о погоде');
@@ -24,7 +24,7 @@ const locationInput = document.querySelector('.locationInput');
 
 const handleLoadWeather = async () => {
   toggleDisplay(contentWeather, false);
-  toggleDisplay(lds_ring);
+  toggleDisplay(loader);
 
   const city = locationInput.value;
   const dataWeather = await getWeatherByCity(city);
@@ -33,7 +33,7 @@ const handleLoadWeather = async () => {
 
   displayCorrectWeather(weatherData);
   toggleDisplay(contentWeather);
-  toggleDisplay(lds_ring, false);
+  toggleDisplay(loader, false);
 };
 
 searchCityBtn.addEventListener('click', handleLoadWeather);

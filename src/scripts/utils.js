@@ -34,74 +34,84 @@ export const toggleDisplay = (elem, toggle = true) => {
   return (elem.style.display = 'none');
 };
 
-export const getCurrentDate = () => {
-  const date = new Date();
+const formatTime = (hour, minute) => {
+  const prepand = hour >= 12 ? 'PM' : 'AM';
 
-  date.setHours(0);
-  date.setMinutes(0);
-  date.setSeconds(0);
-  date.setMilliseconds(0);
+  hour = hour >= 12 ? hour - 12 : hour;
 
-  return date;
+  if (hour < 10) hour = '0' + hour;
+  if (minute < 10) minute = '0' + minute;
+
+  return `${hour}:${minute} ${prepand}`;
 };
 
-export const correctTimeFormat = () => {
+const getCurrentTime = () => {
   const now = new Date();
+
   let hour = now.getHours();
-  const minute = now.getMinutes();
-  const prepand = hour >= 12 ? 'PM' : 'AM';
-  hour = hour >= 12 ? hour - 12 : hour;
-  return `${hour}:${minute} ${prepand}`;
+  let minute = now.getMinutes();
+
+  return formatTime(hour, minute);
 };
 
-export const correctTime = (time) => {
-  let hour = time.slice(0, 2);
+const getFormattedTime = (time) => {
+  let hour = Number(time.slice(0, 2));
+  let minute = Number(time.slice(3, 5));
 
-  const minute = time.slice(3, 5);
-  const prepand = hour >= 12 ? 'PM' : 'AM';
-  hour = hour >= 12 ? hour - 12 : hour;
-  return `${hour}:${minute} ${prepand}`;
+  return formatTime(hour, minute);
 };
 
-export const getWeatherIcon = (weatherData, i) => {
-  const weatherIcon = weatherData.list[i].weather[0].main;
-  if (weatherIcon === 'Thunderstorms') return '/src/icons/thunderstorm.png';
-  if (weatherIcon === 'Drizzle') return '/src/icons/drizzle.png';
-  if (weatherIcon === 'Rain') return '/src/icons/rain.png';
-  if (weatherIcon === 'Snow') return '/src/icons/snow.png';
-  if (weatherIcon === 'Mist') return '/src/icons/mist.png';
-  if (weatherIcon === 'Clear') return '/src/icons/clear.png';
-  if (weatherIcon === 'Clouds') return '/src/icons/clouds.png';
+const getWeatherIcon = (hourItem) => {
+  const weatherIcon = hourItem.weather[0].main;
+  return `/src/icons/${weatherIcon.toLowerCase()}.png`;
+};
+
+const getTemperature = (temp) => {
+  let neutralTemp = Math.round(temp) + '°';
+
+  if (temp > 0) {
+    neutralTemp = '+' + neutralTemp;
+  }
+
+  return neutralTemp;
 };
 
 export const displayCorrectWeather = (weatherData) => {
   const cityName = document.getElementById('cityName');
   const updateTime = document.getElementById('updateTime');
-  const time = weatherData.list[0].dt_txt.slice(11, 16);
-  const now = correctTimeFormat(time);
   const temp = document.querySelector('.celsius');
   const windSpeed = document.querySelector('.windSpeed');
   const humidity = document.querySelector('.humidity');
   const hourElements = document.querySelectorAll('.hour__element');
   const hourSeparator = document.querySelector('.hour__separator');
 
-  let i = 0;
+  const currentHourItem = weatherData.list[0];
+  const { main, wind } = currentHourItem;
+
+  const time = currentHourItem.dt_txt.slice(11, 16);
+  const now = getCurrentTime(time);
 
   if (hourSeparator) hourSeparator.remove();
+
   cityName.textContent = weatherData.city.name;
   updateTime.textContent = 'Update time ' + now;
-  temp.textContent = '+' + Math.round(weatherData.list[0].main.temp) + '°';
-  windSpeed.textContent = weatherData.list[0].wind.speed + ' km/h';
-  humidity.textContent = weatherData.list[0].main.humidity + '%';
 
-  hourElements.forEach((elem) => {
-    if (correctTime(weatherData.list[i].dt_txt.slice(11, 18)) === '9:00 PM') {
+  temp.textContent = getTemperature(main.temp);
+
+  windSpeed.textContent = wind.speed + ' km/h';
+  humidity.textContent = main.humidity + '%';
+
+  for (let i = 0; i < hourElements.length; i++) {
+    const elem = hourElements[i];
+    const hourItem = weatherData.list[i * 2];
+    const formattedTime = getFormattedTime(hourItem.dt_txt.slice(11, 16));
+
+    if (formattedTime === '9:00 PM') {
       elem.insertAdjacentHTML('afterend', separator);
     }
 
-    elem.children[0].textContent = correctTime(weatherData.list[i].dt_txt.slice(11, 18));
-    elem.children[1].src = getWeatherIcon(weatherData, i);
-    elem.children[2].textContent = '+' + Math.round(weatherData.list[i].main.temp) + '°';
-    i += 2;
-  });
+    elem.children[0].textContent = formattedTime;
+    elem.children[1].src = getWeatherIcon(hourItem);
+    elem.children[2].textContent = getTemperature(hourItem.main.temp);
+  }
 };

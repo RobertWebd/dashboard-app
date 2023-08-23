@@ -1,0 +1,53 @@
+.loader {
+  position: relative;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+.loader div {
+  box-sizing: border-box;
+  display: flex;
+  position: absolute;
+  border: 2px solid #000000;
+  border-radius: 50%;
+  animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+.loader div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.loader div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.loader div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.btn-loader {
+  width: 15px;
+  height: 15px;
+}
+
+.btn-loader div {
+  width: 5px;
+  height: 5px;
+  border-color: #000000 transparent transparent transparent;
+}
+
+.content-loader {
+  width: 50px;
+  height: 50px;
+}
+
+.content-loader div {
+  width: 30px;
+  height: 30px;
+  border-color: white transparent transparent transparent;
+}

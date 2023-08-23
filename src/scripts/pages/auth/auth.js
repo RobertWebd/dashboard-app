@@ -10,7 +10,7 @@ const loginButton = document.getElementById('auth__button');
 const userPassword = document.getElementById('auth__password');
 const userLogin = document.getElementById('auth__login');
 
-const lds_ring = document.querySelector('.lds-ring');
+const loader = document.querySelector('.loader');
 const enter__text = document.querySelector('.enter__text');
 
 const handleLogin = async () => {
@@ -22,7 +22,7 @@ const handleLogin = async () => {
   toggleBorder(userLogin, false);
   toggleBorder(userPassword, false);
 
-  toggleDisplay(lds_ring, false);
+  toggleDisplay(loader, false);
 
   if (isLoginEmpty || isPassEmpty) {
     showToast(Errors.InvalidData);
@@ -39,7 +39,7 @@ const handleLogin = async () => {
   }
 
   toggleDisplay(enter__text, false);
-  toggleDisplay(lds_ring);
+  toggleDisplay(loader);
 
   loginButton.setAttribute('disabled', 'true');
 
@@ -53,7 +53,7 @@ const handleLogin = async () => {
   }
 
   toggleDisplay(enter__text);
-  toggleDisplay(lds_ring, false);
+  toggleDisplay(loader, false);
   loginButton.removeAttribute('disabled');
 };
 
