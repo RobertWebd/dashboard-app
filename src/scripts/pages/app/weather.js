@@ -8,32 +8,44 @@ toggleDisplay(loader);
 
 if ('geolocation' in navigator) {
   navigator.geolocation.getCurrentPosition(async (data) => {
-    const { latitude, longitude } = data.coords;
-    const weatherData = await getWeatherByCoords(latitude, longitude);
+    try {
+      const { latitude, longitude } = data.coords;
+      const weatherData = await getWeatherByCoords(latitude, longitude);
 
-    displayCorrectWeather(weatherData);
-    toggleDisplay(contentWeather);
-    toggleDisplay(loader, false);
+      displayCorrectWeather(weatherData);
+      toggleDisplay(contentWeather);
+      toggleDisplay(loader, false);
+    } catch (error) {
+      alert(error.message); //toast
+    } finally {
+      toggleDisplay(contentWeather);
+      toggleDisplay(loader, false);
+    }
   });
 } else {
-  console.log('не могу получить данные о погоде');
+  console.log('Can`t get geolocation');
 }
 
 const searchCityBtn = document.querySelector('.searchIcon');
 const locationInput = document.querySelector('.locationInput');
 
 const handleLoadWeather = async () => {
-  toggleDisplay(contentWeather, false);
-  toggleDisplay(loader);
+  try {
+    toggleDisplay(contentWeather, false);
+    toggleDisplay(loader);
 
-  const city = locationInput.value;
-  const dataWeather = await getWeatherByCity(city);
-  const { lat, lon } = dataWeather.coord;
-  const weatherData = await getWeatherByCoords(lat, lon);
+    const city = locationInput.value;
+    const dataWeather = await getWeatherByCity(city);
+    const { lat, lon } = dataWeather.coord;
+    const weatherData = await getWeatherByCoords(lat, lon);
 
-  displayCorrectWeather(weatherData);
-  toggleDisplay(contentWeather);
-  toggleDisplay(loader, false);
+    displayCorrectWeather(weatherData);
+  } catch (error) {
+    alert(error.message); //toast
+  } finally {
+    toggleDisplay(contentWeather);
+    toggleDisplay(loader, false);
+  }
 };
 
 searchCityBtn.addEventListener('click', handleLoadWeather);
