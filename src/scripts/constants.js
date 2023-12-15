@@ -5,8 +5,9 @@ export const Errors = {
 };
 
 export const Routes = {
-  Auth: '/public/auth.html',
-  App: '/public/app.html',
+  Auth: '/auth.html',
+  App: '/app.html',
 };
 
-
+// Auth: '/public/auth.html',
+// App: '/public/app.html',

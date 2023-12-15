@@ -158,3 +158,11 @@
 .weather__icon:hover {
   transform: translate(5px, -5px);
 }
+
+.currency__table {
+  vertical-align: top;
+}
+
+.currencyIcon {
+  width: 20px;
+}

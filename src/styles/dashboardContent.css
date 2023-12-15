@@ -7,9 +7,8 @@
 
 .content__wrapper {
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  gap: 50px;
 }
 
 .content__weather {
@@ -130,4 +129,16 @@
 }
 
 .content__currency {
+  background-color: rgb(47, 50, 53);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.currency__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 5px;
+  height: 100%;
 }
