@@ -5,9 +5,6 @@ export const Errors = {
 };
 
 export const Routes = {
-  Auth: 'https://robertwebd.github.io/dashboard-app/auth.html',
+  Auth: '/dashboard-app/auth.html',
   App: '/dashboard-app/app.html',
 };
-
-// Auth: '/public/auth.html',
-// App: '/public/app.html',
