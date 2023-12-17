@@ -5,7 +5,7 @@ export const Errors = {
 };
 
 export const Routes = {
-  Auth: '/auth.html',
+  Auth: '/dashboard-app/auth.html',
   App: '/dashboard-app/app.html',
 };
 
