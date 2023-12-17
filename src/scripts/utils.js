@@ -63,7 +63,7 @@ const getFormattedTime = (time) => {
 
 const getWeatherIcon = (hourItem) => {
   const weatherIcon = hourItem.weather[0].main;
-  return `/src/icons/${weatherIcon.toLowerCase()}.png`;
+  return `src/icons/${weatherIcon.toLowerCase()}.png`;
 };
 
 const getTemperature = (temp) => {

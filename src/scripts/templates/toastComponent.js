@@ -1,8 +1,7 @@
 export const getToastComponent = (error, id) => {
-  return (
-    `<div id='toast-${id}' class="toast__wrapper">
+  return `<div id='toast-${id}' class="toast__wrapper">
       <div class="toast__content content">
-        <img class="content__icon"  src="/src/icons/remove.png">
+        <img class="content__icon"  src="src/icons/remove.png">
         <div class="content__text text">
           <div class="text__header">Error</div>
           <div class="text__subText">${error}</div>
@@ -14,6 +13,5 @@ export const getToastComponent = (error, id) => {
           </svg>
         </div>
       </div>
-    </div>`
-  );
+    </div>`;
 };
